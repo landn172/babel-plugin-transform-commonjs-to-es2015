@@ -1,6 +1,6 @@
-# Babel Transform: Node CommonJS to ES modules
+# Babel6 Transform: Node CommonJS to ES modules
 
-[![Build Status](https://travis-ci.org/tbranyen/babel-plugin-transform-commonjs.svg?branch=master)](https://travis-ci.org/tbranyen/babel-plugin-transform-commonjs)
+[![Build Status](https://travis-ci.org/landn172/babel-plugin-transform-commonjs-to-es2015.svg?branch=master)](https://travis-ci.org/landn172/babel-plugin-transform-commonjs-to-es2015)
 
 A Babel 7 compatible transform to convert Node-style CommonJS modules into the
 ES module specification. This was created specifically for an experimental
@@ -46,14 +46,14 @@ Notable features supported:
 ### Usage
 
 ```sh
-npm install --save-dev babel-plugin-transform-commonjs
+npm install --save-dev babel-plugin-transform-commonjs-to-es2015
 ```
 
 Update your babel configuration:
 
 ```json
 {
-  "plugins": ["transform-commonjs"]
+  "plugins": ["transform-commonjs-to-es2015"]
 }
 ```
 
@@ -86,7 +86,7 @@ export default module.exports;
   ```json
   {
     "plugins": [
-      ["transform-commonjs", { "synchronousImport": true }]
+      ["transform-commonjs-to-es2015", { "synchronousImport": true }]
     ]
   }
   ```
@@ -96,7 +96,7 @@ export default module.exports;
   ```json
   {
     "plugins": [
-      ["transform-commonjs", { "onlyExports": true }]
+      ["transform-commonjs-to-es2015", { "onlyExports": true }]
     ]
   }
   ```

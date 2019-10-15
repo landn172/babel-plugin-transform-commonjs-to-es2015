@@ -1,8 +1,8 @@
 import { declare } from '@babel/helper-plugin-utils';
-import { types as t } from '@babel/core';
+import { types as t } from 'babel-core';
 
 export default declare((api, options) => {
-  api.assertVersion(7);
+  // api.assertVersion(6);
 
   const state = {
     globals: new Set(),
@@ -74,13 +74,16 @@ export default declare((api, options) => {
 
     visitor: {
       Program: {
+        enter(path, state) {
+          // fix babel6 options
+          options = state.opts;
+        },
         exit(path) {
 
           path.traverse({
             CallExpression: {
               exit(path) {
                 const { node } = path;
-
                 // Look for `require()` any renaming is assumed to be intentionally
                 // done to break state kind of check, so we won't look for aliases.
                 if (!options.exportsOnly && t.isIdentifier(node.callee) && node.callee.name === 'require') {
